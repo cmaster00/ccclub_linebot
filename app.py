@@ -1,4 +1,3 @@
-#app.py
 from flask import Flask, request, abort
 
 from linebot import (
@@ -13,8 +12,8 @@ from linebot.models import (
 
 app = Flask(__name__)
 
-line_bot_api = LineBotApi('貼上你的line bot channel token')
-handler = WebhookHandler('貼上你的line bot channel secret')
+line_bot_api = LineBotApi('X7Qq3dtLuLqxc2sZsET/NVR3rpcMI8iwIUIEgnNmqpqLH8n4n4Z9lbfHZgbvuG/FSo2JhnWjiW5m+QGb8Qo5VTCWvjlpi9qekQJyziJm4SYt13FDFgQo1qhGUQ9qHmh8Wy+cKfxp0Sv5h9PS3S59lQdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('2e0d562f63e18ddeab0cd06e772ea22f')
 
 
 @app.route("/callback", methods=['POST'])
