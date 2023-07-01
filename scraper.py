@@ -30,13 +30,12 @@ def cashback():
             for td in tds[1]:
                 card_fdback = td.text
                 feedback.append(card_fdback.strip('\n'))
-        print(feedback)
         for i in range(4):
             if feedback[i] == '':
                 continue
             else:
                 content += "{}\n{}\n".format(name[i], feedback[i])
-        print(content)
+        return content
 
 
         # question = soup.find('div', id="sp-eap-accordion-section-18093").find('script',
