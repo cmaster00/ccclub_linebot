@@ -55,7 +55,7 @@ def handle_message(event):
 
     if msg == '現金回饋':
         r = scraper.cashback()
-    elif msg in ['網購']:
+    elif msg == '網購':
         r = scraper.credit_cashback()
     elif msg == '你是誰':
         r = '我是機器人'

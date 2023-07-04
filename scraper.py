@@ -160,7 +160,9 @@ def credit_cashback():
             content3 += "\n\n{}\n回饋比例如下：\n{}\n\n".format(key, value)
         output3 = "數位通路聯名信用卡" + content3
 
-        return output1, output2, output3
+        output = output1 + output2 + output3
+
+        return output
 
     else:
         print("Can't get the website")
