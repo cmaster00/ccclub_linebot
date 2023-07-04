@@ -54,7 +54,7 @@ def handle_message(event):
     #     return
 
     if msg == '現金回饋':
-        r = scraper.cashback()
+        r = scraper.cashback(), scraper.qacashback()
     elif msg == '你吃飯了嗎':
         r = '還沒'
     elif msg == '你是誰':

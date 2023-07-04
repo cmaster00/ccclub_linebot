@@ -11,7 +11,6 @@ def cashback():
     name = []
     feedback = []
     temp_dic = {}
-    temp_list = []
     content = ""
 
     if r.status_code == requests.codes.ok:
@@ -36,8 +35,6 @@ def cashback():
                     continue
                 else:
                     feedback.append(a)
-        # print(name)
-        print(feedback)
 
         sec_info ="\n".join(feedback[1:4])
         third_info = "\n".join(feedback[4:7])
@@ -47,21 +44,33 @@ def cashback():
         temp_dic[name[2]] = third_info
         temp_dic[name[3]] = feedback[7]
         temp_dic[name[4]] = fourth_info
-        print(temp_dic)
+
         for key, value in temp_dic.items():
             content += "{}\n回饋比例如下：\n{}\n\n".format(key, value)
         print(content)
         return content
+    else:
+        print("Can't get the website")
 
+def qacashback():
+    qa_content = ""
 
-        # question = soup.find('div', id="sp-eap-accordion-section-18093").find('script',
-        #                                                                       type="application/ld+json").get_text()
-        # questiontojson = json.loads(question, strict=False)
-        # qa_info = questiontojson['mainEntity']
-        # for qa in qa_info:
-        #     qa_name = qa['name']
-        #     qa_answer = qa['acceptedAnswer']['text']
+    url = 'https://rich01.com/best-only-cashback-credit-cards/'
+    r = requests.get(url, verify=False)
 
+    if r.status_code == requests.codes.ok:
+        soup = BeautifulSoup(r.text, 'html.parser')
+        table = soup.find('table', style="border-collapse: collapse; width: 100%; height: 970px;")
+        question = soup.find('div', id="sp-eap-accordion-section-18093").find('script',
+                                                                              type="application/ld+json").get_text()
+        questiontojson = json.loads(question, strict=False)
+
+        qa_info = questiontojson['mainEntity']
+        for qa in qa_info:
+            qa_name = qa['name']
+            qa_answer = qa['acceptedAnswer']['text']
+            qa_content = "{}\nA:{}\n".format(qa_name, qa_answer)
+         return qa_content
     else:
         print("Can't get the website")
 
