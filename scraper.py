@@ -49,7 +49,7 @@ def cashback():
         temp_dic[name[4]] = fourth_info
         print(temp_dic)
         for key, value in temp_dic.items():
-            content += "{}\n回饋比例如下：\n{}\n".format(key, value)
+            content += "{}\n回饋比例如下：\n{}\n\n".format(key, value)
         print(content)
         return content
 
