@@ -55,14 +55,14 @@ def handle_message(event):
 
     if msg == '現金回饋':
         r = scraper.cashback()
-    elif msg == '你吃飯了嗎':
-        r = '還沒'
+    elif msg in ['網購']:
+        r = scraper.credit_cashback()
     elif msg == '你是誰':
         r = '我是機器人'
 
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=))
+        TextSendMessage(text=r))
 
 
 if __name__ == "__main__":
