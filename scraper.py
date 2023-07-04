@@ -154,13 +154,14 @@ def credit_cashback():
 
         for key, value in abor_dic.items():
             content2 += "\n\n{}\n回饋比例如下：\n{}\n".format(key, value)
-        output2 = "海外網購聯名信用卡" + content2
+        output2 = "\n海外網購聯名信用卡" + content2
 
         for key, value in dig_dic.items():
             content3 += "\n\n{}\n回饋比例如下：\n{}\n".format(key, value)
-        output3 = "數位通路聯名信用卡" + content3
+        output3 = "\n數位通路聯名信用卡" + content3
 
         output = output1 + output2 + output3
+        print(output)
 
         return output
 
