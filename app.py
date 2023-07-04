@@ -40,20 +40,20 @@ def callback():
 @handler.add(MessageEvent, message=TextMessage)
 def handle_message(event):
     msg = event.message.text
-    r = '很抱歉，您說什麼?'
+    r = '很抱歉，您可以輸入【現金回饋】或【網購回饋】得到相關資訊。'
 
-    if '給我貼圖' in msg:
-        sticker_message = StickerSendMessage(
-            package_id='1',
-            sticker_id='1'
-        )
+    # if '給我貼圖' in msg:
+    #     sticker_message = StickerSendMessage(
+    #         package_id='1',
+    #         sticker_id='1'
+    #     )
+    #
+    #     line_bot_api.reply_message(
+    #         event.reply_token,
+    #         sticker_message)
+    #     return
 
-        line_bot_api.reply_message(
-            event.reply_token,
-            sticker_message)
-        return
-
-    if msg in ['hi', 'Hi']:
+    if msg == '現金回饋':
         r = scraper.cashback()
     elif msg == '你吃飯了嗎':
         r = '還沒'

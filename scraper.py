@@ -10,6 +10,8 @@ def cashback():
 
     name = []
     feedback = []
+    temp_dic = {}
+    temp_list = []
     content = ""
 
     if r.status_code == requests.codes.ok:
@@ -29,12 +31,26 @@ def cashback():
                     name.append(a)
             for td in tds[1]:
                 card_fdback = td.text
-                feedback.append(card_fdback.strip('\n'))
-        for i in range(4):
-            if feedback[i] == '':
-                continue
-            else:
-                content += "{}\n{}\n".format(name[i], feedback[i])
+                a = card_fdback.strip('\n')
+                if a == '':
+                    continue
+                else:
+                    feedback.append(a)
+        # print(name)
+        print(feedback)
+
+        sec_info ="\n".join(feedback[1:4])
+        third_info = "\n".join(feedback[4:7])
+        fourth_info = "\n".join(feedback[8:10])
+        temp_dic[name[0]] = feedback[0]
+        temp_dic[name[1]] = sec_info
+        temp_dic[name[2]] = third_info
+        temp_dic[name[3]] = feedback[7]
+        temp_dic[name[4]] = fourth_info
+        print(temp_dic)
+        for key, value in temp_dic.items():
+            content += "{}\n回饋比例如下：\n{}\n".format(key, value)
+        print(content)
         return content
 
 
@@ -51,8 +67,12 @@ def cashback():
 
 
 def credit_cashback():
+    global credit_name, fdback
     url_2 = 'https://rich01.com/e-commerce-credit-card/'
     r = requests.get(url_2, verify=False)
+
+    name = []
+    feedback = []
 
     if r.status_code == requests.codes.ok:
         soup = BeautifulSoup(r.text, 'html.parser')
@@ -63,9 +83,14 @@ def credit_cashback():
             for tr in trs[2:len(trs) - 1]:
                 tds = tr.find_all('td')
                 for td in tds[0]:
-                    print(td.text)
+                    credit_name = td.text
+                    name.append(credit_name.strip('\n'))
+                    # print(credit_name)
                 for td in tds[1]:
-                    print(td.text)
+                    fdback = td.text
+                    feedback.append(fdback.strip('\n'))
+                    # print(fdback)
+        print(name, feedback)
     else:
         print("Can't get the website")
 
