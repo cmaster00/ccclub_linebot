@@ -52,27 +52,27 @@ def cashback():
     else:
         print("Can't get the website")
 
-def qacashback():
-    qa_content = ""
-
-    url = 'https://rich01.com/best-only-cashback-credit-cards/'
-    r = requests.get(url, verify=False)
-
-    if r.status_code == requests.codes.ok:
-        soup = BeautifulSoup(r.text, 'html.parser')
-        table = soup.find('table', style="border-collapse: collapse; width: 100%; height: 970px;")
-        question = soup.find('div', id="sp-eap-accordion-section-18093").find('script',
-                                                                              type="application/ld+json").get_text()
-        questiontojson = json.loads(question, strict=False)
-
-        qa_info = questiontojson['mainEntity']
-        for qa in qa_info:
-            qa_name = qa['name']
-            qa_answer = qa['acceptedAnswer']['text']
-            qa_content = "{}\nA:{}\n".format(qa_name, qa_answer)
-         return qa_content
-    else:
-        print("Can't get the website")
+# def qacashback():
+#     qa_content = ""
+#
+#     url = 'https://rich01.com/best-only-cashback-credit-cards/'
+#     r = requests.get(url, verify=False)
+#
+#     if r.status_code == requests.codes.ok:
+#         soup = BeautifulSoup(r.text, 'html.parser')
+#         table = soup.find('table', style="border-collapse: collapse; width: 100%; height: 970px;")
+#         question = soup.find('div', id="sp-eap-accordion-section-18093").find('script',
+#                                                                               type="application/ld+json").get_text()
+#         questiontojson = json.loads(question, strict=False)
+#
+#         qa_info = questiontojson['mainEntity']
+#         for qa in qa_info:
+#             qa_name = qa['name']
+#             qa_answer = qa['acceptedAnswer']['text']
+#             qa_content = "{}\nA:{}\n".format(qa_name, qa_answer)
+#          return qa_content
+#     else:
+#         print("Can't get the website")
 
 
 def credit_cashback():
