@@ -54,7 +54,7 @@ def handle_message(event):
     #     return
 
     if msg == '現金回饋':
-        r = scraper.cashback(), scraper.qacashback()
+        r = scraper.cashback()
     elif msg == '你吃飯了嗎':
         r = '還沒'
     elif msg == '你是誰':
@@ -62,7 +62,7 @@ def handle_message(event):
 
     line_bot_api.reply_message(
         event.reply_token,
-        TextSendMessage(text=r))
+        TextSendMessage(text=))
 
 
 if __name__ == "__main__":
